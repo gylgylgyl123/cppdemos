@@ -30,7 +30,9 @@ int main()
 	//find
 	int arr[] = { 0,1,2,3,4,6,6,333,8,9 };
 	vector<int> iA(arr+3, arr + 4);	
-	int len = sizeof(arr) / sizeof(arr[0]);
+	int len = sizeof(arr) / sizeof(arr[0]);//为什么写成ARR[0]比写成INT更好？数组名作为函数的参数传递的时候，存在数组名退化的问题，它会变为一个指针，这里SIZEOF除出来的是整个数组
+	//原因：说到sizeof，首先必须知道的一点：sizeof不是函数，sizeof是操作符。sizeof的作用就是，计算一个对象或类型所占的内存字节数。
+	//参考链接：https://blog.csdn.net/water_3700348/article/details/78118760
 	cout << "len = " << len << endl;
 	cout << count(arr, arr + len, 333) << endl;//统计333的个数
 	cout << count_if(arr, arr + len, bind2nd(less<int>(), 7)) << endl;//统计小于7的个数
